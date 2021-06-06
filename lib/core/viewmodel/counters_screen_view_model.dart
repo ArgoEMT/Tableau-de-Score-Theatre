@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
+import 'package:timer_count_down/timer_controller.dart';
 
 class CountersSreenViewModel with ChangeNotifier {
   var scoreTeamOne = 0;
@@ -17,6 +18,7 @@ class CountersSreenViewModel with ChangeNotifier {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   StreamController<int> _tempsController = StreamController<int>();
+  final CountdownController controller = CountdownController();
 
   Stream<int> get tempsStream {
     return _tempsController.stream;
@@ -85,5 +87,9 @@ class CountersSreenViewModel with ChangeNotifier {
   void incrementOtherTeamScore({required int team}) {
     team == 2 ? scoreTeamOne += 1 : scoreTeamTwo += 1;
     notifyListeners();
+  }
+
+  bool isAbleToDecrement({required int team}) {
+    return team == 1 ? scoreTeamOne != 0 : scoreTeamTwo != 0;
   }
 }

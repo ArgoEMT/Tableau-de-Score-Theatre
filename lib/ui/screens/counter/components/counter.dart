@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tableau_score_theatre/core/viewmodel/counters_screen_view_model.dart';
+import '../../../../core/viewmodel/counters_screen_view_model.dart';
+
+import 'faute_widget.dart';
 
 class Counter extends StatefulWidget {
   final int equipe;
@@ -57,15 +59,17 @@ class _CounterState extends State<Counter> {
         Row(
           children: [
             IconButton(
+              color: Colors.white,
               iconSize: 50,
-              onPressed: () {
-                setState(() {
-                  model.decrementTeamScore(team: widget.equipe);
-                });
-              },
+              onPressed: model.isAbleToDecrement(team: widget.equipe)
+                  ? () {
+                      setState(() {
+                        model.decrementTeamScore(team: widget.equipe);
+                      });
+                    }
+                  : null,
               icon: Icon(
                 Icons.remove,
-                color: Colors.white,
               ),
             ),
             SizedBox(width: 25),
@@ -85,14 +89,17 @@ class _CounterState extends State<Counter> {
         ),
         GestureDetector(
           onTap: _incrementColor,
-          child: Container(
-            alignment: Alignment.center,
+          child: Card(
+            elevation: 8,
             color: containerColor,
-            width: 250,
-            height: 250,
-            child: Text(
-              model.getScoreByTeam(team: widget.equipe).toString(),
-              style: TextStyle(fontSize: 100),
+            child: Container(
+              alignment: Alignment.center,
+              width: 250,
+              height: 250,
+              child: Text(
+                model.getScoreByTeam(team: widget.equipe).toString(),
+                style: TextStyle(fontSize: 100),
+              ),
             ),
           ),
         ),
@@ -104,26 +111,20 @@ class _CounterState extends State<Counter> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  color: model.getTeamFautes(team: widget.equipe) > 0
+                FauteWidget(
+                  cardColor: model.getTeamFautes(team: widget.equipe) > 0
                       ? Colors.red
                       : Colors.white,
-                  height: 50,
-                  width: 50,
                 ),
-                Container(
-                  color: model.getTeamFautes(team: widget.equipe) > 1
+                FauteWidget(
+                  cardColor: model.getTeamFautes(team: widget.equipe) > 1
                       ? Colors.red
                       : Colors.white,
-                  height: 50,
-                  width: 50,
                 ),
-                Container(
-                  color: model.getTeamFautes(team: widget.equipe) > 2
+                FauteWidget(
+                  cardColor: model.getTeamFautes(team: widget.equipe) > 2
                       ? Colors.red
                       : Colors.white,
-                  height: 50,
-                  width: 50,
                 ),
               ],
             ),
