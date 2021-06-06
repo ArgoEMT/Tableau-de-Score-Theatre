@@ -29,3 +29,5 @@ Utiliser les boutons au dessus du minuteur.
 Cliquer sur le minuteur, entrer le nombre de minutes et de secondes voulu. Cliquer sur valider. Réinitialiser le minuteur.
 
 ![Alt text](https://lh3.googleusercontent.com/pw/ACtC-3fKQFfPceqWCAdCHr1ZfdA9d8xFTxJ5BRcg6l-vDJmWw5aSUzipla5iYvvFXWAyxcQMpWeoVnvuw8IWoql4nEU7Gwr_IeZpKkEcwsIkAWbREY5NUM8UH4zHezHS9V-A3MUVkZ2eyx51Zr1ftw-rpaKJ=w1920-h1040-no?authuser=0"Minuteur")
+
+Me contacter : victor.daumas@outlook.fr
